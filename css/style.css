@@ -1,0 +1,49 @@
+.error p {
+	color : #dc3545;
+}
+.outch{
+	cursor:pointer;
+}
+.outch:hover {
+	opacity : 0.8;
+}
+
+.clickedList {
+	color : #23b7e5 !important;
+}
+
+@media (min-width : 768px) {
+	.mobile-navbar {
+		display : none;
+	}
+}
+
+@media (max-width: 768px) {
+	.mobile-navbar {
+	  z-index : 1000;
+	  overflow: hidden;
+	  background-color: #f8f9fa;
+	  border : 1px solid #dde6e9;
+	  position: fixed;
+	  bottom: 0;
+	  width: 100%;
+	}
+
+	.mobile-navbar a {
+	  display: block;
+	  float : left;
+	  color: #f2f2f2;
+	  text-align: center;
+	  width : calc(100% - 50px);
+	  height : 60px;
+	  padding : 0.750rem 40%;
+	  text-decoration: none;
+	  font-size: 1.250rem;
+	  border-right : 1px solid #dde6e9;
+	}
+	
+	.mobile-navbar a:nth-child(2) {
+		padding :0.750rem 0;
+		width : 50px;
+	}
+}
