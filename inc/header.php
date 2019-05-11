@@ -34,8 +34,10 @@ if(!empty($_SESSION)) {
     $getDeviceList = getDeviceList($postData);
 
     $getSerialNo = array();
-    foreach ( $getDeviceList["data"] as $val) {
-        array_push($getSerialNo , $val["SerialNo"]) ;
+    foreach ( $getDeviceList["data"] as $key => $val) {
+
+        $getSerialNo[$val['SerialNo']]['boardName'] = $val['BoardName'];
+
     }
 
 }
@@ -93,8 +95,11 @@ if(!empty($_SESSION)) {
 	<!-- =============== APP SCRIPTS ===============-->
 	<script src="/js/app.min.js"></script>
 
+    <!-- =============== Customer JS =============== -->
 	<script src="/js/common.js"></script>
-	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="/js/fs-conf.js"></script>
+    <script src="/js/realTime.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
 </head>
@@ -147,11 +152,13 @@ if(!empty($_SESSION)) {
 				<!-- 장비 모니터링 시작-->
 
 				<!-- 예약 설정 시작-->
+                <!--
 				<li class="nav-item font-weight-bold">
 					<a class="nav-link" href="/schedule/scheduleView.php"> 
 						<img style="width:20px; hegith:20px;" src="/img/icon_schedule_n.png" /> <span class="d-none d-md-inline">스케쥴 설정</span>
 					</a>
 				</li>
+				-->
 				<!-- 예약 설정 시작-->
 				
 				<!-- 로그 시작-->

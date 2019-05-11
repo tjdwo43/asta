@@ -142,31 +142,34 @@
 			});
 			
 			checkedIdx = checkedIdxArr.join(",");
-			
-			$.ajax({
-				url : "/device/deviceAjaxProc.php",
-				type : 'post',
-				data : {
-					'mode' : 'deleteDevice',
-					'serialNo' : checkedIdx,
-					'BoardName' : boardName,
-					'Location' : pLocation,
-					'IPAddr' : ipAddr,
-					'Port' : port,
-					'useYN' : controlUse,
-					'DeviceId' : deviceId,
-					'MACAddr' : macAddr
-				},
-				success : function(){
-					alert("삭제 되었습니다.");
-					
-					$("input[name=checkOne]:checked").each(function(){
-						$(this).closest('li').remove();
-					});
 
-					//$("#countUser").text($("[name=userInfo]").length);
-				}
-			});
+			if(confirm("Main I/O Control Board를 삭제하시겠습니까?")) {
+                $.ajax({
+                    url : "/device/deviceAjaxProc.php",
+                    type : 'post',
+                    data : {
+                        'mode' : 'deleteDevice',
+                        'serialNo' : checkedIdx,
+                        'BoardName' : boardName,
+                        'Location' : pLocation,
+                        'IPAddr' : ipAddr,
+                        'Port' : port,
+                        'useYN' : controlUse,
+                        'DeviceId' : deviceId,
+                        'MACAddr' : macAddr
+                    },
+                    success : function(){
+                        alert("삭제 되었습니다.");
+
+                        $("input[name=checkOne]:checked").each(function(){
+                            $(this).closest('li').remove();
+                        });
+
+                        //$("#countUser").text($("[name=userInfo]").length);
+                    }
+
+                });
+            }
 		});
 	});
 </script>

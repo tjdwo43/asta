@@ -765,8 +765,15 @@
 		$("#saveTemp").click(function(){					//온도 설정 저장
 			pTempMax.val($("#modalTempMax").val());
 			pTempMin.val($("#modalTempMin").val());
+
+			if( pTempMax.val() < pTempMin.val() ){
+			    alert("최소값이 최대값보다 큽니다.");
+			    return;
+            }else {
+                $("#tempModal").modal('hide');
+            }
 			
-			$("#tempModal").modal('hide');
+
 		});
 
 		$(document).on("click", ".huModal", function(){		//습도 설정 모달
@@ -793,8 +800,16 @@
 		$("#saveHu").click(function(){
 			pHuMax.val($("#modalHuMax").val());
 			pHuMin.val($("#modalHuMin").val());
-			
-			$("#huModal").modal('hide');
+
+
+            if( pHuMax.val() < pHuMin.val() ){
+                alert("최소값이 최대값보다 큽니다.");
+                return;
+            }else {
+                $("#huModal").modal('hide');
+            }
+
+
 		});
 
 		$(document).on("click", ".gasModal", function(){	//가스 설정 모달
@@ -818,8 +833,16 @@
 		$("#saveGas").click(function(){						//가스 설정 저장
 			pGasMax.val($("#modalGasMax").val());
 			pGasMin.val($("#modalGasMin").val());
-			
-			$("#gasModal").modal('hide');
+
+
+            if( pGasMax.val() < pGasMin.val() ){
+                alert("최소값이 최대값보다 큽니다.");
+                return;
+            }else {
+                $("#gasModal").modal('hide');
+            }
+
+
 		});
 
 		$(document).on("click", "[name=delGWBtn]", function(){	//게이트웨이 삭제
@@ -916,123 +939,6 @@
 		});
 
 	}); // E : device Jquery 끝
-    
-    var deviceSerialNoList = '<?=json_encode($getSerialNo)?>';
-    var deviceSerialNoListJson = $.parseJSON(deviceSerialNoList);
-    
-    $(document).ready(function(){
-        let currentDateStr = getTimeStamp();
-
-        var config = {
-            apiKey: "AIzaSyB5fynBW8XxyKncF0jfF5zkl6Ea9V7pm_g",
-            authDomain: "asta-49744.firebaseapp.com",
-            databaseURL: "https://asta-49744.firebaseio.com",
-            projectId: "asta-49744",
-            storageBucket: "asta-49744.appspot.com",
-            messagingSenderId: "409436546529"
-        };
-
-        if (!firebase.apps.length) {
-            firebase.initializeApp(config);
-        }
-
-        var db = firebase.firestore();
-
-        //main I/O board
-        db.collection("tb_device").where("SerialNo", "==", currentSerialNo)
-            .onSnapshot(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-
-                    $("#inputBoardName").val(doc.data().BoardName);
-                    $("#inputLocation").val(doc.data().Location);
-                    $("#inputMACAddr").val(doc.data().MACAddr);
-                    $("#inputIPAddr").val(doc.data().IPAddr);
-                    $("#inputPort").val(doc.data().Port);
-
-                });
-
-            });
-
-
-
-        db.collection("tb_gateway").where("SerialNo", "==", currentSerialNo)
-            .onSnapshot(function(snapshot) {
-                snapshot.docChanges.forEach(function(change) {
-
-                    if (change.type === "added") {
-                        console.log("New city: ", change.doc.data());
-                    }
-
-                    if (change.type === "modified") {
-
-                        console.log(change.doc.data())
-
-                        for ( let i=0; i < (document.getElementById("gwList").rows.length / 2); i++ ) {
-
-                            if( document.getElementsByName("gw"+i)[0].value == change.doc.data().GatewayKey ) {
-                                let parent_tr = document.getElementsByName("gw"+i)[0].parentElement
-                                let parent_tr_cmt = parent_tr.nextElementSibling
-
-                                parent_tr.getElementsByTagName("td")[0].children[0].children[0].value = change.doc.data().GatewayUseYN
-                                if( change.doc.data().GatewayUseYN == 1) parent_tr.getElementsByTagName("td")[0].children[0].children[0].checked = true
-                                else parent_tr.getElementsByTagName("td")[0].children[0].children[0].checked = false
-
-                                parent_tr.getElementsByTagName("td")[2].children[0].value = change.doc.data().inch1Select
-
-                                parent_tr.getElementsByTagName("td")[3].children[0].value = change.doc.data().inch2Select
-                                parent_tr.getElementsByTagName("td")[4].children[0].value = change.doc.data().inch3Select
-                                parent_tr.getElementsByTagName("td")[5].children[0].value = change.doc.data().inch4Select
-                                parent_tr.getElementsByTagName("td")[6].children[0].value = change.doc.data().inch5Select
-                                parent_tr.getElementsByTagName("td")[7].children[0].value = change.doc.data().inch6Select
-
-                                parent_tr.getElementsByTagName("td")[8].children[0].value = change.doc.data().outch1Select
-                                parent_tr.getElementsByTagName("td")[9].children[0].value = change.doc.data().outch2Select
-                                parent_tr.getElementsByTagName("td")[10].children[0].value = change.doc.data().outch3Select
-
-                                parent_tr.getElementsByTagName("td")[11].value = change.doc.data().tempYN
-                                if( change.doc.data().tempYN == 1) parent_tr.getElementsByTagName("td")[11].children[0].children[0].checked = true
-                                else parent_tr.getElementsByTagName("td")[11].children[0].children[0].checked = false
-
-                                parent_tr.getElementsByTagName("td")[12].value = change.doc.data().huYN
-                                if( change.doc.data().huYN == 1) parent_tr.getElementsByTagName("td")[12].children[0].children[0].checked = true
-                                else parent_tr.getElementsByTagName("td")[12].children[0].children[0].checked = false
-
-                                parent_tr.getElementsByTagName("td")[13].value = change.doc.data().gasYN
-                                if( change.doc.data().gasYN == 1) parent_tr.getElementsByTagName("td")[13].children[0].children[0].checked = true
-                                else parent_tr.getElementsByTagName("td")[13].children[0].children[0].checked = false
-
-                                /*cmt*/
-                                parent_tr_cmt.getElementsByTagName("td").item(0).children[0].value = change.doc.data().GatewayCmt
-                                parent_tr_cmt.getElementsByTagName("td").item(1).children[0].value = change.doc.data().inch1Cmt
-                                parent_tr_cmt.getElementsByTagName("td").item(2).children[0].value = change.doc.data().inch2Cmt
-                                parent_tr_cmt.getElementsByTagName("td").item(3).children[0].value = change.doc.data().inch3Cmt
-                                parent_tr_cmt.getElementsByTagName("td").item(4).children[0].value = change.doc.data().inch4Cmt
-                                parent_tr_cmt.getElementsByTagName("td").item(5).children[0].value = change.doc.data().inch5Cmt
-                                parent_tr_cmt.getElementsByTagName("td").item(6).children[0].value = change.doc.data().inch6Cmt
-
-                                parent_tr_cmt.getElementsByTagName("td").item(7).children[0].value = change.doc.data().outch1Cmt
-                                parent_tr_cmt.getElementsByTagName("td").item(8).children[0].value = change.doc.data().outch2Cmt
-                                parent_tr_cmt.getElementsByTagName("td").item(9).children[0].value = change.doc.data().outch3Cmt
-
-                                parent_tr_cmt.getElementsByTagName("td").item(10).children[0].value = change.doc.data().tempCmt
-                                parent_tr_cmt.getElementsByTagName("td").item(11).children[0].value = change.doc.data().huCmt
-                                parent_tr_cmt.getElementsByTagName("td").item(12).children[0].value = change.doc.data().gasCmt
-
-                            }
-                        }
-                    } // E : modified
-
-                    if (change.type === "removed") {
-                        console.log("Removed city: ", change.doc.data());
-                    }
-
-                });
-            }); // E : onSnapShot 
-    });
-
-
-
-
 </script>
 
 <? include $_SERVER[DOCUMENT_ROOT]."/inc/footer.php"?>

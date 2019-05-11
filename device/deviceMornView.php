@@ -5,8 +5,8 @@
 ?>
 <style type="text/css">
 	.table td {
-		max-width : 100px;
-		min-width : 100px;
+		max-width : 150px;
+		min-width : 150px;
 	}
 </style>
 <section class="section-container">
@@ -24,18 +24,18 @@
 					<table class="table table-bordered">
 						<colgroup>
 							<col>
-							<col width=120><!-- in1 -->
-							<col width=120><!-- in2 -->
-							<col width=120><!-- in3 -->
-							<col width=120><!-- in4 -->
-							<col width=120><!-- in5 -->
-							<col width=120><!-- in6 -->
-							<col width=120><!-- out1 -->
-							<col width=120><!-- out2 -->
-							<col width=120><!-- out3 -->
-							<col width=100><!-- temperate -->
-							<col width=100><!-- humid -->
-							<col width=100><!-- Gas -->
+							<col width=145px;><!-- in1 -->
+							<col width=145px;><!-- in2 -->
+							<col width=145px;><!-- in3 -->
+							<col width=145px;><!-- in4 -->
+							<col width=145px;><!-- in5 -->
+							<col width=145px;><!-- in6 -->
+							<col width=145px;><!-- out1 -->
+							<col width=145px;><!-- out2 -->
+							<col width=145px;><!-- out3 -->
+							<col width=145px;><!-- temperate -->
+							<col width=145px;><!-- humid -->
+							<col width=145px;><!-- Gas -->
 						</colgroup>
 						<thead>
 							<tr>
@@ -84,12 +84,12 @@
 					<div class="form-group">
 						<div class="text-center">
 							<label class="c-radio">
-								<input id="inlineradio1" type="radio" name="useYN" value="1">
+								<input id="inlineradio1" type="radio" name="useYN" value="3">
 								<span class="fa fa-circle"></span> ON
 							</label>
 
 							<label class="c-radio">
-								<input id="inlineradio2" type="radio" name="useYN" value="2">
+								<input id="inlineradio2" type="radio" name="useYN" value="4">
 								<span class="fa fa-circle"></span> OFF
 							</label>
 						</div>
@@ -292,70 +292,10 @@
 				outchOnOff = [];
 				$("#outControlModal").modal('hide');
 			});
+
+
 	});
 
-    $(document).ready(function(){
-        let currentDateStr = getTimeStamp();
-
-        var config = {
-            apiKey: "AIzaSyB5fynBW8XxyKncF0jfF5zkl6Ea9V7pm_g",
-            authDomain: "asta-49744.firebaseapp.com",
-            databaseURL: "https://asta-49744.firebaseio.com",
-            projectId: "asta-49744",
-            storageBucket: "asta-49744.appspot.com",
-            messagingSenderId: "409436546529"
-        };
-
-        if (!firebase.apps.length) {
-            firebase.initializeApp(config);
-        }
-
-        var db = firebase.firestore();
-
-        let currentSerialNo = $("[name=deviceList]").find(".getDeviceList ").data("serialnum");
-
-        $("[name=deviceList]").find(".getDeviceList ").each(function(){
-
-            if($(this).hasClass("clickedList") ) currentSerialNo = $(this).data("serialnum");
-
-        })
-
-        var deviceRef = db.collection("tb_gateway")
-
-        db.collection("tb_gateway").where("SerialNo", "==", currentSerialNo)
-            .onSnapshot(function(snapshot) {
-                snapshot.docChanges.forEach(function(change) {
-
-                    if (change.type === "modified") {
-                        console.log(change.doc.data())
-
-                        if (change.doc.data().SerialNo == currentSerialNo) {
-                            $.ajax({
-                                url: "/device/deviceAjaxProc.php",
-                                type: "post",
-                                data: {
-                                    'mode': 'getMornDevice_n',
-                                    'SerialNo': currentSerialNo
-                                },
-                                success: function (data) {
-                                    returnData = $.parseJSON(data);
-
-                                    returnDataArr = returnData['data'];
-                                    $("#gwList").html(returnData['html']);
-                                },
-                                beforeSend: function () {
-                                    $(".wrapper").addClass("whirl traditional");
-                                },
-                                complete: function () {
-                                    $(".wrapper").removeClass("whirl traditional");
-                                }
-                            });
-                        }
-                    }
-                }); // E : onSnapshot.foreach
-            }); // E : onSnapshot
-
-    }); // E : realTime document.ready
 
 </script>
 <? include $_SERVER[DOCUMENT_ROOT]."/inc/footer.php"?>

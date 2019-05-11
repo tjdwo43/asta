@@ -51,8 +51,11 @@
 					$inch_bgColor = "#fff";
 				}
 			if($inchSelectVal != '0'){?>
-				<td style="background-color:<?=$inch_bgColor?>; color:#fff" class="text-truncate">
-					<em class="<?=$inchStatus?>"></em> <span><?=$inchCmtVal?></span>
+				<td style="background-color:<?=$inch_bgColor?>; color:#fff" >
+					<em class="<?=$inchStatus?>"></em>
+                    <p class="line2-ellisis">
+                        <?=$inchCmtVal?>
+                    </p>
 				</td>
 			<?}else{
 				echo $offTd;	
@@ -76,15 +79,18 @@
 					$outchIcon = "fa fas fa-desktop";
 				}
 				
-				if($outchOnOFFVal  == '1'){
+				if($outchOnOFFVal  == '1' || $outchOnOFFVal  == '3'){
 					$outch_bgColor = "#e57b80";	//빨간색, 출력
-				}else if($outchOnOFFVal  == '2'){
+				}else if($outchOnOFFVal  == '2' || $outchOnOFFVal  == '4'){
 					$outch_bgColor = "#76bc57";	//초록색, 미출력
 				}
 
 			if($outchSelectVal == '1' || $outchSelectVal == '3'){?>	
 				<td style="background-color:<?=$outch_bgColor?>; color:#fff;" class="<?=($_SESSION['user_auth'] >= 2)?"outch":""?>  text-truncate" data-OnOff=<?=$outchOnOFFVal?>>
-					<em class="<?=$outchIcon?>"></em> <span><?=$outchCmt?></span>
+                    <em class="<?=$outchIcon?>"></em>
+                    <p class="line2-ellisis">
+                        <span><?=$outchCmt?></span>
+                    </p>
 				</td>
 			<?}else {?>
 				<td style="background-color:#656565; color:#fff;" data-OnOff=<?=$outchOnOFFVal?>></td>
@@ -94,24 +100,34 @@
 
 		<!-- 온도 -->
 		<?if($deviceRow['tempYN'] == '1'){?>
-			<td class="text-truncate">
-				<?=$deviceRow['temperature']?>&deg;C
+			<td>
+                <?=$deviceRow['temperature']?>&deg;C
+                <p class="line2-ellisis">
+                    <span><?=$deviceRow['tempCmt']?></span>
+                </p>
+
 			</td>
 		<?}else{
 			echo $offTd;
 		}?>
 		<!-- 습도 -->
 		<?if($deviceRow['huYN'] == '1'){?>
-			<td class="text-truncate">
+			<td>
 				<?=$deviceRow['humidity']?>%
+                <p class="line2-ellisis">
+                    <span><?=$deviceRow['huCmt']?></span>
+                </p>
 			</td>
 		<?}else{
 			echo $offTd;
 		}?>
 		<!-- Gas -->
 		<?if($deviceRow['gasYN'] == '1'){?>
-			<td class="text-truncate">
+			<td>
 				<?=$deviceRow['gas']?>%
+                <p class="line2-ellisis">
+                    <span><?=$deviceRow['gasCmt']?></span>
+                </p>
 			</td>
 		<?}else{
 			echo $offTd;
