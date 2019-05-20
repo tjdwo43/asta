@@ -1,5 +1,5 @@
 <?
-	include_once $_SERVER_["DOCUMENT_ROOT"]."/inc/fnc.php";
+	include_once $_SERVER["DOCUMENT_ROOT"]."/inc/fnc.php";
 
 	function getDeviceList($data){
 		$url = "/ASTA-API/api/device/getDeviceList";

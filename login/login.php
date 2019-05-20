@@ -1,6 +1,4 @@
 <?
-	include_once $_SERVER["DOCUMENT_ROOT"]."/inc/fnc.php";
-
 	function loginProc($data = Array()){
 		// POST the data to an api
 		$url = '/ASTA-API/api/user/login';

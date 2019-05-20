@@ -30,6 +30,8 @@
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/m/css/layout.css">
 
+<link href="/css/jquery.datetimepicker.min.css" type="text/css" rel="stylesheet"><!-- datetimepicker -->
+
 <!-- =============== VENDOR SCRIPTS ===============-->
 <!-- MODERNIZR-->
 <script src="/vendor/modernizr/modernizr.custom.js"></script>
@@ -45,6 +47,8 @@
 <script src="/js/app.min.js"></script>
 
 <script src="/js/common.js"></script>
+<script src="/js/fs-conf.js"></script>
+<script src="/js/realTime.js"></script>
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>

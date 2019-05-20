@@ -26,4 +26,11 @@
 
 		return $apiResult;
 	}
+
+	function changePasswd($data){
+	    $url = "/ASTA-API/api/user/changePasswd";
+	    $apiResult = callRestApi($data, $url);
+
+	    return $apiResult;
+    }
 ?>

@@ -110,7 +110,6 @@ var deviceSNList = '<?=json_encode($deviceSerialNumList)?>';
 var deviceSNJson = $.parseJSON(deviceSNList);
 var deviceSNOptions = [];
 
-
 //idOptions.push({text:'<?=$_SESSION["user_id"]?>', value:'<?=$_SESSION["user_id"]?>'});
 for(var i =0; i < idJson.length; i++){
 	idOptions.push({text:idJson[i], value:idJson[i]});

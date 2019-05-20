@@ -1,6 +1,7 @@
 <?
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
 ?>
 
 <!DOCTYPE html>
@@ -16,46 +17,6 @@ ini_set('display_errors', 1);
 
     <? include $_SERVER["DOCUMENT_ROOT"]."/m/mHeader.php"; ?>
 
-    <ul class="buildingList">
-        <li>
-            <div class="d-inline-block">
-                <div class="font-weight-bold">SK V1 Center</div>
-                <div>서울 금천구 가산디지털로 1로</div>
-            </div>
-            <div class="status-nomal d-inline-block float-right">1/7</div>
-        </li>
-        <li>
-            <div class="d-inline-block">
-                <div class="font-weight-bold">SK V1 Center</div>
-                <div>서울 금천구 가산디지털로 1로</div>
-            </div>
-            <div class="status-danger d-inline-block float-right">1/7</div>
-        </li>
-        <li>
-            <div class="d-inline-block">
-                <div class="font-weight-bold">SK V1 Center</div>
-                <div>서울 금천구 가산디지털로 1로</div>
-            </div>
-            <div class="status-nomal d-inline-block float-right">1/7</div>
-        </li>
-        <li>
-            <div class="d-inline-block">
-                <div class="font-weight-bold">SK V1 Center</div>
-                <div>서울 금천구 가산디지털로 1로</div>
-            </div>
-            <div class="status-danger d-inline-block float-right">1/7</div>
-        </li>
-        <li>
-            <div class="d-inline-block">
-                <div class="font-weight-bold">SK V1 Center</div>
-                <div>서울 금천구 가산디지털로 1로</div>
-            </div>
-            <div class="status-nomal d-inline-block float-right">1/7</div>
-        </li>
-    </ul>
-    
+    <ul class="buildingList"></ul>
 
-</body>
-
-
-<html>
+    <? include $_SERVER["DOCUMENT_ROOT"]."/m/bottom.php"; ?>

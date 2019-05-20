@@ -1,12 +1,31 @@
 <?
 	session_start();
 
-	include $_SERVER[DOCUMENT_ROOT]."/inc/fnc.php";
 	include $_SERVER[DOCUMENT_ROOT]."/device/device.php";
 	
 	$mode = $_POST['mode'];
 
 	switch($mode){
+        case 'getMainDeivce' :
+            if($_SESSION["user_auth"] == 4 ){	//관리자 A
+                $regist_seq = 0;
+            }else if($_SESSION["user_auth"] == 3){	//관리자 B
+                $regist_seq = $_SESSION["user_seq"];
+            }else {	//사용자
+                $regist_seq = $_SESSION["user_superId"];
+            }
+
+            $postData = Array(
+                'regist_seq' => $regist_seq,
+                'org_code' => $_POST["org_code"]
+            );
+
+            $getDeviceList = getDeviceList($postData);
+
+            $deviceListJson = json_encode($getDeviceList);
+
+            echo $deviceListJson;
+            break;
 		case 'registDevice' :	//control I/O 등록
 			$postData = Array(
 							'SerialNo' => $_POST['SerialNo'],

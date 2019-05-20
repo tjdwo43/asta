@@ -31,6 +31,8 @@
 
                 alertModifyRealTime(config, deviceSerialNoListJson, currentDateStr)
 
+                setBuldingSession()
+
             }); // E : realTime document.ready
 
 		</script>

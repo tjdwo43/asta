@@ -11,6 +11,8 @@
 	);
 	
 	$userList = getListUser($postData);
+
+	//p($userList);
 ?>
 <?include $_SERVER[DOCUMENT_ROOT]."/user/userAsside.php";?>
 
@@ -423,11 +425,11 @@
 					},
 					success : function(data){
 						console.log(data);
-						if(data == 0){
+						if(data == '0'){
 							alert("수정되었습니다.");
 							window.location.href = "/user/userView.php?seq="+seq;
 						}else {
-							alert("수정되지 않았습니다.");
+							alert("서버오류");
 						}
 					},
 					beforeSend : function(){

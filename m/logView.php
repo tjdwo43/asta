@@ -1,5 +1,11 @@
+<?
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+$today = date("Y-m-d");
+?>
 <!DOCTYPE HTML>
 
+<html>
 <head>
     <? include $_SERVER["DOCUMENT_ROOT"]."/m/head.php"?>
 </head>
@@ -8,11 +14,10 @@
 <? include $_SERVER["DOCUMENT_ROOT"]."/m/mHeader.php"?>
 
 <section class="logSearch">
-
     <div class="text-center">
         <div class="calendar-div d-inline-block">
-            <div class="input-group date" id="datetimepicker1">
-                <input class="form-control" type="text">
+            <div class="input-group date" >
+                <input class="form-control" type="text" id="sDate" value="<?=$today?>">
                 <span class="input-group-append input-group-addon">
                 <span class="fa-calendar-alt fas input-group-text"></span>
              </span>
@@ -20,8 +25,8 @@
         </div>
         ~
         <div class="calendar-div d-inline-block">
-            <div class="input-group date" id="datetimepicker1">
-                <input class="form-control" type="text">
+            <div class="input-group date">
+                <input class="form-control" type="text" id="eDate" value="<?=$today?>">
                 <span class="input-group-append input-group-addon">
                 <span class="fa-calendar-alt fas input-group-text"></span>
              </span>
@@ -30,7 +35,7 @@
     </div>
 
     <div class="text-center p-3 searchBtn">
-        <button class="btn btn-info">조회</button>
+        <button class="btn btn-info" onclick="getMobileLog()">조회</button>
     </div>
 
 </section>
@@ -38,8 +43,8 @@
 <section class="logList">
     <table class="mTable">
         <colgroup>
-            <col>
-            <col>
+            <col width="20%">
+            <col width="30%">
             <col>
         </colgroup>
         <thead>
@@ -49,29 +54,37 @@
                 <th>상황</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>13:40:52</td>
-                <td>가산 SK V1 Center</td>
-                <td>기계실-누수1 발생함</td>
-            </tr>
-            <tr>
-                <td>13:40:52</td>
-                <td>가산 SK V1 Center</td>
-                <td>기계실-누수1 발생함</td>
-            </tr>
-            <tr>
-                <td>13:40:52</td>
-                <td>가산 SK V1 Center</td>
-                <td>기계실-누수1 확인함 (확인자:홍길동)</td>
-            </tr>
-            <tr>
-                <td>13:40:52</td>
-                <td>가산 SK V1 Center</td>
-                <td>기계실-누수1 발생함</td>
-            </tr>
-        </tbody>
+        <tbody></tbody>
     </table>
 </section>
 
-</body>
+<script src="/js/jquery.datetimepicker.js"></script><!-- datetimepicker -->
+<script>
+    $(function (){
+        //기간설정
+        $( '#sDate' ).datetimepicker({
+            lang: 'ko',
+            format:'Y-m-d',
+            timepicker:false,
+            onSelectDate: function () {
+                $( '#sDate' ).datetimepicker("hide");
+                $( '#eDate' ).datetimepicker("show");
+            }
+        });
+        $( '#eDate' ).datetimepicker({
+            lang: 'ko',
+            format:'Y-m-d',
+            formatDate:'Y-m-d',
+            timepicker:false,
+            closeOnDateSelect: true,
+            onShow: function () {
+                var sDate = $( '#sDate' ).val();
+                this.setOptions({
+                    minDate: sDate
+                })
+            }
+        });
+    })
+</script>
+
+<? include $_SERVER["DOCUMENT_ROOT"]."/m/bottom.php"; ?>

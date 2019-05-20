@@ -7,7 +7,23 @@
 	$mode = $_POST['mode'];
 
 	switch($mode) {
+        case 'getUserList' :
+            //좌측 유저 리스트
+            $postData = Array(
+                'org_code' => $_POST['orgCode'],
+                'auth'	=>	$_SESSION['user_auth'],
+                'superId' => ($_SESSION['user_auth'] == 4)?"":$_SESSION['user_seq']
+            );
+
+            $userList = getListUser($postData);
+
+            $userListJson = json_encode($userList);
+
+            echo $userListJson;
+
+            break;
 		case 'registerUser' :
+		    $grade = $_POST["depart"] ?? "미입력";
 			$postData = Array(
 				'id' => $_POST['id'],
 				'passwd' => $_POST['passwd'],
@@ -18,7 +34,8 @@
 				'auth' => $_POST['auth'],
 				'comment' => ($_POST['comment'])?$_POST['comment']:'',
 				'superId' => $_POST['superId'],
-				'depart' => $_POST['depart']
+				'depart' => $_POST['depart'],
+                'grade' => $grade
 			);
 
 			$apiResult = registerUser($postData);
@@ -96,6 +113,7 @@
 			$comment = $_POST['comment'] ?? $_SESSION['user_comment'];
 			$pushId = $_POST['pushId'] ?? $_SESSION['user_pushId'];
 			$id = $_POST['id'] ?? $_SESSION['user_id'];
+			$grade = $_POST['grade'] ?? $_SESSION['user_grade'];
 
 			$sessionPhone = empty($_SESSION['user_phone']) ?? '' ;
 			$sessionDepart = empty($_SESSION['user_phone']) ?? '' ;
@@ -114,7 +132,9 @@
 				'authM' =>  $authName,
 				'org_code' => $_SESSION['user_orgCode'],
 				'idM' => $id,
-				'pushId' => $pushId
+				'pushId' => $pushId,
+                'grade' => $grade,
+                'passwd' => ''
 			);
 
 			$apiResult = updateUser($postData);
@@ -124,5 +144,17 @@
 			//print_r($apiResult);
 			
 			break;
+        case 'changePasswd' :
+            $postData = Array(
+                'seq' => $_SESSION['user_seq'],
+                'passwd' => $_POST['newPasswd']
+            );
+
+            $apiResult = changePasswd($postData);
+
+            p($apiResult);
+
+            echo $apiResult['result'];
+            break;
 	}
 ?>

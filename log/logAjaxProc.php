@@ -1,7 +1,9 @@
 <?
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 	session_start();
 
-	include $_SERVER[DOCUMENT_ROOT]."/log/logApi.php";
+	include $_SERVER['DOCUMENT_ROOT']."/log/logApi.php";
 	
 	$mode = $_POST['mode'];
 
@@ -136,5 +138,42 @@
 			include $_SERVER[DOCUMENT_ROOT]."/log/cBoardHistory.php";
 			
 			break;
+        case 'writeAlarmLog':
+            $postData = Array(
+                'SerialNo' => $_POST['serialNo'],
+                'org_code' => $_SESSION['user_lastOrg'],
+                'id' => $_SESSION['user_id'],
+                'comment' => $_POST['comment'],
+                'GatewayKey' => $_POST['gwKey'],
+                "chNo" => $_POST['chNo'],
+                "type" => $_POST['type'],
+                "bldgName" => $_POST['bldgName']
+            );
+
+            $apiResult = writeAlarmLog($postData);
+
+            echo $apiResult['result'];
+
+            break;
+        case 'getMobileHistory':
+            $url = "/ASTA-API/api/history/getChHistoryList";
+
+            $org_code = ($_SESSION['user_lastOrg']=='')?$_SESSION['user_orgCode']:$_SESSION['user_lastOrg'];
+            $gatewayKey = $_POST['gatewayKey'] ?? '';
+            $key = $_POST['key'] ?? '';
+
+            $postData = Array(
+                'org_code' => $org_code,
+                'startDate' => $_POST['sDate']." 00:00:00",
+                'endDate' => $_POST['eDate']." 23:59:59",
+                'key' => $key,
+                'auth' => $_SESSION['user_auth'],
+                'gatewayKey' => $gatewayKey
+            );
+
+            $apiResult = callRestApi($postData, $url);
+
+            echo json_encode($apiResult);
+            break;
 	}
 ?>

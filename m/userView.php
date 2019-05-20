@@ -1,5 +1,11 @@
+<?
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+?>
 <!DOCTYPE HTML>
 
+<html>
 <head>
     <? include $_SERVER["DOCUMENT_ROOT"]."/m/head.php"?>
 </head>
@@ -21,80 +27,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><em class="fa fa-circle text-danger"></em></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="tel:010-1234-5678">010-1234-5678</a></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>홍길동</td>
-            <td>대리</td>
-            <td><a href="sns:010-1234-5678">010-1234-5678</a></td>
-        </tr>
         </tbody>
     </table>
 </section>
 
-</body>
+<script>
+    userList()
+</script>
+
+<? include $_SERVER["DOCUMENT_ROOT"]."/m/bottom.php"; ?>
