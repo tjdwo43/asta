@@ -112,13 +112,13 @@
 			<!-- I/O Control Gateway board Info End-->
 
 			<!-- Gateway board Info -->
-			<div class="card card-default" id="gwCard">
+			<div class="card card-default" id="gwCard" >
 				<div class="card-header">
 					<h4 class="d-inline">Gateway</h4>
 					<button class="btn btn-danger float-right" id="allDeleteGw">전체 삭제</button>
 				</div>
 				<!-- START table-responsive-->
-				<div class="table-responsive pb-3">
+				<div class="table-responsive pb-3" style="max-height:450px; overflow-y: auto;">
 					<table class="table table-bordered table-hover gTable">
 						<thead>
 							<tr>
@@ -592,6 +592,7 @@
 						'MACAddr' : macAddr,
 					},
 					success : function(data){
+					    console.log(data)
 						alert("수정 되었습니다.");
 						//window.location.href="/device/deviceConfView.php?serialNo="+serialNo;
 					}
@@ -725,7 +726,7 @@
 					'gasMin' : gasMin
 				},
 				success : function(data){
-					if(data == 0){
+					if(data == "0"){
                         updateGatewayKey = gwData[0];
 
                         currentSerialNo = $("#inputSerialNo").val();    //현재 보고 있는 I/O controler board serialNo

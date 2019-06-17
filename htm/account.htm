@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>사무기기 관리 프로그램!</title>
+
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="js/html5shiv.js"></script>
+<![endif]-->
+
+<!-- Fav and touch icons -->
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/scripts.js"></script>
+</head>
+
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h3 class="text-center">
+				사무기기 관리프로그램
+			</h3>
+			<ul class="nav nav-tabs">
+				<li {FAXACT}>
+					<a href="/?viewMode=FAX">팩스파일</a>
+				</li>
+				<li {SCANACT}>
+					<a href="/?viewMode=SCAN">스캔파일</a>
+				</li>
+				<li {ASSETACT}>
+					<a href="/?viewMode=ASSET">장비정보</a>
+				</li>
+				<li {OIDACT}>
+					<a href="/?viewMode=OID">게더링정보</a>
+				</li>
+				<li {NETACT}>
+					<a id="modal-net" href="#modal-container-net" role="button" data-toggle="modal">네트웍 장비조회</a>
+				</li>
+				<li>
+					<a href="/?viewMode=ACCOUNT">계정관리</a>
+				</li>
+				<li>
+					<a href="/?viewMode=LOGOUT">로그아웃</a>
+				</li>
+				<!--
+				<li class="disabled">
+					<a href="#">Messages</a>
+				</li>
+				-->
+				<li class="dropdown pull-right">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle">환경설정<strong class="caret"></strong></a>
+					<ul class="dropdown-menu">
+						<!--<li><a id="modal-ver" href="#modal-container-config" role="button" data-toggle="modal">환경설정</a></li>-->
+						<li><a id="modal-oid" href="#modal-container-oid" role="button" data-toggle="modal">OID 조회</a></li>
+						<li><a id="modal-ver" href="#modal-container-ver" role="button" data-toggle="modal">프로그램정보</a></li>
+						<!--
+						<li><a href="#">Another action</a></li>
+						<li><a href="#">Something else here</a></li>
+						<li class="divider"></li>
+						<li><a href="#">Separated link</a></li>
+						-->
+					</ul>
+				</li>
+			</ul>
+			<ul class="breadcrumb">
+				<li class="active"></li>
+			</ul>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table">
+				{ROWTR}
+			</table>
+		</div>
+	</div>
+	
+	{FORMACTION}
+
+	<div class="row clearfix">
+		<div class="col-md-12 column" style="margin:100px 0px 0px 0px;">
+			 <address>
+				<strong>(주)다큐, Inc.</strong><br>
+				본사 : 서울시 구로구 구로동 197-33 E＆C벤처 드림타워 207호<br>
+				물류 : 경기도 고양시 덕양구 도내동 760-1<br>
+				<abbr title="Phone">T:</abbr> 070-7118-7979 (친구친구)
+			</address>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal-container-ver" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">
+						프로그램 정보
+					</h4>
+				</div>
+				<div class="modal-body">
+					ver 1.0
+				</div>
+				<div class="modal-footer">
+					 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal-container-net" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">
+						네트웍 장비 조회
+					</h4>
+				</div>
+				<form name="frm" method="post" action="/">
+				<input type="hidden" name="viewMode" value="NET">
+				<div class="modal-body">					
+					<div class="form-group">
+						<span>아이피 대역 : <input type="text" class="form-control" name="sIP" style="width:300px;" value="192.168.0.1"> ~ <input type="text" class="form-control" name="eIP" style="width:50px;" value="255"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					 <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button> <button type="submit" class="btn btn-primary">장비조회</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal-container-oid" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">
+						OID 조회
+					</h4>
+				</div>
+				<form name="frm" method="post" action="/">
+				<input type="hidden" name="viewMode" value="GETOID">
+				<div class="modal-body">					
+					<div class="form-group">
+						<span>아이피 : <input type="text" class="form-control" name="setIP" style="width:300px;"></span>
+					</div>
+					<div class="form-group">
+						<span>OID : <input type="text" class="form-control" name="setOID" style="width:300px;"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					 <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button> <button type="submit" class="btn btn-primary">OID 조회</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal-container-config" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myModalLabel">
+						환경설정
+					</h4>
+				</div>
+
+				<form name="frm" method="post" action="/">
+				<input type="hidden" name="viewMode" value="CONFIG">
+				<div class="modal-body">					
+					<div class="form-group">
+						<span>아이피 대역 : <input type="text" class="form-control" name="sIP" style="width:300px;" value="192.168.0.1"> ~ <input type="text" class="form-control" name="eIP" style="width:50px;" value="255"></span>
+					</div>
+				</div>
+				<div class="modal-footer">
+					 <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button> <button type="button" class="btn btn-primary">설정저장</button>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

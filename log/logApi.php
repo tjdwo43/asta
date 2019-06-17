@@ -24,5 +24,25 @@ function getChHistoryList($data){
     return $apiResult;
 }
 
+function getLogList($data){
+    $url = "/ASTA-API/api/history/getLogList";
+    $apiResult = callRestApi($data, $url);
+
+    return $apiResult;
+}
+
+function getMobileLogList($data){
+    $url = "/ASTA-API/api/history/getLogListMobile";
+    $apiResult = callRestApi($data, $url);
+
+    return $apiResult;
+}
+
+function getOneLogList($data){
+    $url = "/ASTA-API/api/history/getChHistoryList";
+    $apiResult = callRestApi($data, $url);
+
+    return $apiResult;
+}
 ?>
 

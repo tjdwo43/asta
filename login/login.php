@@ -3,7 +3,7 @@
 		// POST the data to an api
 		$url = '/ASTA-API/api/user/login';
 		
-		//API 호출
+		//ASTA-API/api 호출
 		$apiResult = callRestApi($data, $url);
 		
 		return $apiResult;

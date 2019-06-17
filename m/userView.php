@@ -1,6 +1,6 @@
 <?
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 
 ?>
 <!DOCTYPE HTML>
@@ -16,17 +16,21 @@ ini_set('display_errors', 1);
 <section class="userList">
     <table class="mTable">
         <colgroup>
+            <col width="1%">
+            <col>
+            <col>
             <col>
         </colgroup>
         <thead>
         <tr>
             <th></th>
             <th>이름</th>
-            <th>직책</th>
+            <th>부서</th>
+            <th>직위</th>
             <th>연락처</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody class="user_tbody">
         </tbody>
     </table>
 </section>

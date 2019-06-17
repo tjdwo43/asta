@@ -14,7 +14,7 @@ function p(){ // .... p($COOKIE);
 }
 
 function callRestApi( $data = Array(), $pUrl ){	//Rest API 호출
-	$frUrl = "http://dev.sh-system.co.kr:8080";
+	$frUrl = "http://arms.astaibs.co.kr:8080";
 	//$frUrl = "http://58.225.16.36:8080";
 
 	$fullUrl = $frUrl.$pUrl;
@@ -33,8 +33,6 @@ function callRestApi( $data = Array(), $pUrl ){	//Rest API 호출
  
 	// Create the POST context
 	$context  = stream_context_create($opts);
-
-	//p($opts);
  
 	// POST the data to an api
 	$apiResult = file_get_contents($fullUrl, false, $context);

@@ -2422,7 +2422,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     type: {
       email: "올바른 이메일 형식이 아닙니다.",
       url: "This value should be a valid url.",
-      number: "This value should be a valid number.",
+      number: "숫자만 입력하 실 수 있습니다.",
       integer: "This value should be a valid integer.",
       digits: "This value should be digits.",
       alphanum: "This value should be alphanumeric."
@@ -2434,8 +2434,8 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     max: "This value should be lower than or equal to %s.",
     range: "This value should be between %s and %s.",
     minlength: "최소 %s 자 이상 입력하셔야 됩니다.",
-    maxlength: "This value is too long. It should have %s characters or fewer.",
-    length: "This value length is invalid. It should be between %s and %s characters long.",
+    maxlength: "최대 %s 자 이상 입력 하실 수 있습니다.",
+    length: "최소 %s자 에서 최대 %s자를 입력 해야 합니다.",
     mincheck: "You must select at least %s choices.",
     maxcheck: "You must select %s choices or fewer.",
     check: "You must select between %s and %s choices.",

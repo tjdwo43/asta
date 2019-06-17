@@ -45,6 +45,11 @@
 				</div>
 			<?}?>
 			<!-- END sidebar nav-->
+            <div class="sidebar-tglBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 		</nav>
 	</div>
 	<!-- END Sidebar (left)-->
@@ -115,7 +120,6 @@
 						else{
 							$('.error').removeClass("d-none");
 						}
-						
 					}
 				});
 			}

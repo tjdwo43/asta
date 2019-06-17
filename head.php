@@ -1,8 +1,8 @@
 <?php  session_start(); ?>
 <?php
-	if( $_SESSION['login_id'] =='') 
+	if( $_SESSION['login_id'] =='')
 	{
-		echo "<meta http-equiv='refresh' content='0; url=./index.php'>"; 
+		echo "<meta http-equiv='refresh' content='0; url=./index.php'>";
 		exit;
 	}
 	include "db.php";
@@ -17,7 +17,7 @@
 		padding: 0;
 		font-family:'돋움';
 	}
- 	
+
    a{
    	text-decoration:none;
    	color: #000;
@@ -36,7 +36,7 @@
 		font-family:'돋움';
    }
 </style>
-<SCRIPT type="text/javascript"> 
+<SCRIPT type="text/javascript">
 function menumac_edit(f)
 {
         if (!f.MAC.value)
@@ -62,7 +62,7 @@ function menumac_edit(f)
 			alert('올바른 MAC이 아닙니다.');
             f.MAC.focus();
             return false;
-		}	
+		}
 }
 function menumac_check(f)
 {
@@ -89,7 +89,7 @@ function menumac_check(f)
 			f.MAC.value="";
             f.MAC.focus();
             return false;
-		}	
+		}
 }
 
 function status_view_submit(index)
@@ -98,18 +98,18 @@ function status_view_submit(index)
 		document.status_view.action="excel_save.php";
 	else if(index == 3)
 		document.status_view.action="excel_save_history.php";
-	else	
+	else
 		document.status_view.action="main.php?menu=2&sub=1";
 
 	document.status_view.submit();
 }
 <?php
-	if($_GET[menu] == "2" && $_GET[sub] == "") 
+	if($_GET[menu] == "2"  $_GET[sub] == "")
 		echo 'setTimeout("location.reload()",3000)';
 ?>
 </SCRIPT>
 </head>
-<body >
+<body>
 <!-- top  -->
 <table width=100% cellspacing=0 cellpadding=0 border=0 background="./img/top_bg.png">
 <form action=logout.php  method=post>
@@ -117,19 +117,19 @@ function status_view_submit(index)
 <td style="padding-left:20px" align=left width=332px><img src="./img/program_name2.png"></td>
 <td align=left style="padding-left:15px" width=60px><font size=2 color=red><?php echo $VERSION; ?></font></td>
 
-<td align=right> 
-<b><?php 
-	if($_GET[menu] == "2" && $_GET[sub] == "") 
+<td align=right>
+<b><?php
+	if($_GET[menu] == "2"  $_GET[sub] == "")
 	{
 		date_default_timezone_set('Asia/Seoul');
-		echo date("Y-m-d H:i:s"); 
+		echo date("Y-m-d H:i:s");
 	}
 	?>
 </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color=red><?php echo $_SESSION['login_id']."(".$_SERVER['REMOTE_ADDR'].")"; ?></font>님 환영합니다.
 </td>
 
-<td style="padding-right:20px;padding-left:10px" align=right width=62px> 
-<input name="logout" type="image" style="cursor:pointer" src='./img/btn_logout_n.png' 
+<td style="padding-right:20px;padding-left:10px" align=right width=62px>
+<input name="logout" type="image" style="cursor:pointer" src='./img/btn_logout_n.png'
 		onmouseover="this.src='./img/btn_logout_h.png'" onmousedown="this.src='./img/btn_logout_p.png'" onmouseout="this.src='./img/btn_logout_n.png'">
 </td>
 </tr>
@@ -154,7 +154,7 @@ function status_view_submit(index)
 		<td align=center style="padding-left:5px;padding-right:5px;">
 		<font style="font-size:14px;font-family:돋움;">Mac&nbsp;&nbsp; <?php echo "<b><input type=text value='".$_SESSION['view_mac']."' disabled></b>";?> </font>
 		</td>
-		</tr>	
+		</tr>
 		</table>
 
 	</td></tr>
@@ -168,7 +168,7 @@ function status_view_submit(index)
 			$TAG_HISTORY="<tr><td valign=center height=48px><a href='main.php?menu=4&sel=0' style=font-size:16px;padding-left:45px;>통계관리</a></td></tr>";
 			$TAG_ADMIN="<tr><td valign=center height=48px><a href='main.php?menu=5&sel=0' style=font-size:16px;padding-left:45px;>관리자메뉴</a></td></tr>";
 
-			if($_GET[menu] == "1") // 맥 변경 
+			if($_GET[menu] == "1") // 맥 변경
 			{
 				echo '<tr><td align=right>';
 				echo '<img src="./img/btn_menu_setting.png">';
@@ -179,7 +179,7 @@ function status_view_submit(index)
 				echo $TAG_HISTORY;
 				echo $TAG_ADMIN;
 			}
-			else if($_GET[menu] == "2") 
+			else if($_GET[menu] == "2")
 			{
 				echo $TAG_SETTING;
 
@@ -213,7 +213,7 @@ function status_view_submit(index)
 				echo '<img src="./img/btn_menu_history.png">';
 				echo '</td></tr>';
 				echo $TAG_ADMIN;
-	
+
 			}
 			else if($_GET[menu] == "5")
 			{
@@ -240,16 +240,16 @@ function status_view_submit(index)
 		?>
 		</table>
 	</td></tr>
-<?php	
- 
-	if($_GET[menu] == "2" && $_GET[sub] == "") 
+<?php
+
+	if($_GET[menu] == "2"  $_GET[sub] == "")
 	{
 ?>
 		<tr valign=top><td align=center>
 
 		<table width=230px height=414px cellspacing=0 cellpadding=0 border=0 background='./img/bg_guide.png'>
 		<tr><td colspan=2 height=30%></td></tr>
-		
+
 		<tr><td width=40% align=center> <img src='./img/icon_stand_by.png'> </td><td>작업없음</td></tr>
 		<tr><td width=40% align=center> <img src='./img/icon_ready_to_upgrade.png'></td><td> 업그레이드 예약됨</td></tr>
 		<tr><td width=40% align=center> <img src='./img/icon_downloading.png'></td><td> 다운로드 진행중 </td></tr>
@@ -264,7 +264,7 @@ function status_view_submit(index)
 
 		<tr height=10%><td align=center>
 		</td></tr>
-<?php	
+<?php
 	}
 ?>
 	</table>

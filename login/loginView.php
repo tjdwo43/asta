@@ -3,15 +3,15 @@
 ?>
 <link rel="stylesheet" href="/css/style.css">
 
-<div class="block-center wd-xl" style="margin-top:15%">
+<div class="block-center wd-xxl" style="margin-top:15%">
 	<!-- START card-->
 	<div class="card card-flat bg-transparent" style="box-shadow:inherit;">
 		
-		<div class="card-header text-center">
-			<img class="block-center rounded" src="/img/ci_asta_arms_vert.png" alt="Image" style = "width:70%";>
+		<div class="card-header text-center mb-4">
+			<img class="block-center rounded" src="/img/ci_asta_arms_vert.png" alt="Image" style = "width:90%";>
 		</div>
 
-		<div class="card-body">
+		<div class="card-body pl-0 pr-0">
 			<form class="mb-3" id="loginForm" method="post" action="loginProc.php" >
 				<input type="hidden" name="mode" value="login"/>
 				<div class="form-group">
@@ -34,12 +34,23 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<?if($_GET['f']=='1'){?>
 					<div class="error">
-						<p>아이디 또는 비밀번호를 다시 확인하세요.<br>회원 등록되지 않은 아이디이거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다.</p>
+						<p>아이디 또는 비밀번호를 다시 확인하세요.<br>등록되지 않은 아이디이거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다.</p>
 					</div>
 				<?}?>
+
+                <?if($_GET['f']=='2'){?>
+                    <div class="error">
+                        <p>서버에러</p>
+                    </div>
+                <?}?>
+                <?if($_GET['f'] !='2'){?>
+                <div class="error">
+                    <p>(숫자, 영문자 대소문자 구분)</p>
+                </div>
+                <?}?>
 <!--
 				<div class="clearfix">
 					 <div class="checkbox c-checkbox float-left mt-0">

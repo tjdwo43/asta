@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>ASTA</title>
+    <!-- =============== VENDOR STYLES ===============-->
+    <!-- FONT AWESOME-->
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/@fortawesome/fontawesome-free/css/brands.css">
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/@fortawesome/fontawesome-free/css/regular.css">
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/@fortawesome/fontawesome-free/css/solid.css">
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <!-- SIMPLE LINE ICONS-->
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/simple-line-icons/css/simple-line-icons.css">
+
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/css/bootstrap.min.css" id="bscss">
+    <!-- =============== APP STYLES ===============-->
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/css/app.min.css" id="maincss">
+
+    <!-- ANIMATE.CSS-->
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/animate.css/animate.css">
+
+    <!-- WHIRL (spinners)-->
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/whirl/dist/whirl.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment-with-locales.min.js"></script>
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/css/style.css">
+    <link rel="stylesheet" href="../../../Documents/카카오톡%20받은%20파일/아카이브/css/asta_style.css">
+
+    <!-- =============== VENDOR SCRIPTS ===============-->
+    <!-- MODERNIZR-->
+    <script src="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/modernizr/modernizr.custom.js"></script>
+    <!-- STORAGE API-->
+    <script src="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/js-storage/js.storage.js"></script>
+
+    <!-- BOOTSTRAP-->
+    <!-- <script src="/vendor/popper.js/dist/umd/popper.js"></script> -->
+    <script src="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- PARSLEY-->
+    <script src="../../../Documents/카카오톡%20받은%20파일/아카이브/vendor/parsleyjs/dist/parsley.min.js"></script>
+    <!-- =============== APP SCRIPTS ===============-->
+    <script src="../../../Documents/카카오톡%20받은%20파일/아카이브/js/app.min.js"></script>
+
+    <!-- =============== Customer JS =============== -->
+    <script src="../../../Documents/카카오톡%20받은%20파일/아카이브/js/asta-event.js"></script>
+</head>
+
+<body>
+    <div class="wrapper ">
+        <!-- top navbar-->
+        <header class="topnavbar-wrapper">
+            <!-- START Top Navbar-->
+            <nav class="navbar topnavbar">
+                <!-- START Left navbar-->
+                <ul class="navbar-nav mr-auto flex-row pl-lg-5 navbar-leftArea">
+                    <!-- 장비 모니터링 유저 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../Documents/카카오톡%20받은%20파일/아카이브/monitor_view_user.html">
+                            <img src="../../../Documents/카카오톡%20받은%20파일/아카이브/img/icon/icon_monitoring_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">장비 모니터링</span>
+                        </a>
+                    </li>
+                    <!-- 장비 모니터링 유저 시작-->
+                    <!-- 장비 모니터링 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../Documents/카카오톡%20받은%20파일/아카이브/monitor_view_admin.html">
+                            <img src="../../../Documents/카카오톡%20받은%20파일/아카이브/img/icon/icon_monitoring_admin_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">장비 모니터링(관리자)</span>
+                        </a>
+                    </li>
+                    <!-- 장비 모니터링 시작-->
+                    <!-- 로그 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../Documents/카카오톡%20받은%20파일/아카이브/logView.html">
+                            <img src="../../../Documents/카카오톡%20받은%20파일/아카이브/img/icon/icon_log_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">이력 조회</span>
+                        </a>
+                    </li>
+                    <!-- 로그 끝-->
+                    <!-- 스케줄 설정 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link" id="user-block-toggle" href="../../../Documents/카카오톡%20받은%20파일/아카이브/scheduleConfig.html">
+                            <img src="../../../Documents/카카오톡%20받은%20파일/아카이브/img/icon_schedule_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">스케줄 설정</span>
+                        </a>
+                    </li>
+                    <!-- 스케줄 설정 끝 -->
+                    <!-- 유저 관리 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link" id="user-block-toggle" href="../../../Documents/카카오톡%20받은%20파일/아카이브/userManage.html">
+                            <img src="../../../Documents/카카오톡%20받은%20파일/아카이브/img/icon_user_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">사용자 관리</span>
+                        </a>
+                    </li>
+                    <!-- 유저 관리 끝 -->
+                    <!-- 장비 설정 시작 -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./deviceConfig.html">
+                            <img src="../../../Documents/카카오톡%20받은%20파일/아카이브/img/icon/icon_device_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">장비 설정</span>
+                        </a>
+                    </li>
+                    <!-- 장비 설정 끝-->
+                    <!-- 빌딩 관리 시작 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../../Documents/카카오톡%20받은%20파일/아카이브/bldgManage.html">
+                            <img src="../../../Documents/카카오톡%20받은%20파일/아카이브/img/icon/icn_bldg_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">빌딩 관리</span>
+                        </a>
+                    </li>
+                    <!-- 빌딩 관리 끝 -->
+                </ul>
+                <!-- START Right Navbar-->
+                <ul class="navbar-nav flex-row navbar-rightArea">
+                    <li class="nav-item font-weight-bold">
+                        <a class="nav-link font-weight-lighter" onclick="JS_logout();">
+                            <span class="d-none d-md-inline mr-2">가산 SK V1 Center - <?=$_SESSION[user_name]."(".$auth_name.")"?></span>
+                            <span class="count-circle text-center">2</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- END Right Navbar-->
+            </nav>
+            <!-- END Top Navbar-->
+        </header>
+
+        <section class="section-container buildManagement">
+            <!-- Page content-->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="row mt-n2">
+                        <div class="col-xl-8 buildingFilter">
+                            <h3 class="d-inline-block mr-2 contentTitle">빌딩명</h3>
+                            <div class="d-inline-block">
+                                <select class="form-control">
+                                    <option>가산 SK V1 Center</option>
+                                    <option>가산 SK V1 Center</option>
+                                </select>
+                            </div>
+                            <h3 class="d-inline-block ml-4 mr-2 contentTitle">설치위치</h3>
+                            <div class="d-inline-block">
+                                <select class="form-control">
+                                    <option>가산 SK V1 Center</option>
+                                    <option>가산 SK V1 Center</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 text-right optBtnArea">
+                            <button class="btn btn-info btn-xs" type="button" id="regist">조회</button>
+                            <button class="btn btn-secondary btn-xs" type="button">수정</button>
+                            <button class="btn btn-secondary btn-xs" type="button">삭제</button>
+                            <button class="btn btn-secondary btn-xs" type="button" id="manuaRegistBtn">수동등록</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-xl-12">
+                    <div class="card card-default card-demo mb-0 IO_controlArea">
+                        <div class="card-header">
+                            <div class="card-title font-weight-middle font-middleGray">I/O Control Board</div>
+                        </div>
+                        <div class="card-wrapper">
+                            <div class="card-body card_content p-0">
+                                <div class="table-responsive table-bordered">
+                                    <table class="table text-center">
+                                        <colgroup>
+                                            <col width="240px" />
+                                            <col width="180px" />
+                                            <col width="*" />
+                                            <col width="180px" />
+                                            <col width="140px" />
+                                            <col width="120px" />
+                                            <col width="80px" />
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th class="listSortBtn">빌딩명 <i class="fas fa-sort-up ml-2"></i></th>
+                                                <th>설치위치</th>
+                                                <th>비고</th>
+                                                <th>S/N</th>
+                                                <th>MAC</th>
+                                                <th>IP</th>
+                                                <th>PORT</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <input class="form-control" type="text" name="" value="가산 SK V1 Center" />
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" type="text" name="" value="1층 상업지구" />
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" type="text" name="" />
+                                                </td>
+                                                <td>B827EBAA9B7A</td>
+                                                <td>B8:27:EB:AA:9B:7A</td>
+                                                <td>192.168.0.125</td>
+                                                <td>8080</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3 GWconfig">
+                <div class="col-xl-12">
+                    <div role="tabpanel">
+                        <!-- Nav tabs-->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item" role="presentation"><a class="nav-link active" href="#GW1" aria-controls="GW1" role="tab" data-toggle="tab" aria-selected="true">GW1</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW2" aria-controls="GW2" role="tab" data-toggle="tab">GW2</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW3" aria-controls="GW3" role="tab" data-toggle="tab">GW3</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW4" aria-controls="GW4" role="tab" data-toggle="tab">GW4</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW5" aria-controls="GW5" role="tab" data-toggle="tab">GW5</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW6" aria-controls="GW6" role="tab" data-toggle="tab">GW6</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW7" aria-controls="GW7" role="tab" data-toggle="tab">GW7</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW8" aria-controls="GW8" role="tab" data-toggle="tab">GW8</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW9" aria-controls="GW9" role="tab" data-toggle="tab">GW9</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW10" aria-controls="GW10" role="tab" data-toggle="tab">GW10</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW11" aria-controls="GW11" role="tab" data-toggle="tab">GW11</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW12" aria-controls="GW12" role="tab" data-toggle="tab">GW12</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW13" aria-controls="GW13" role="tab" data-toggle="tab">GW13</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW14" aria-controls="GW14" role="tab" data-toggle="tab">GW14</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW15" aria-controls="GW15" role="tab" data-toggle="tab">GW15</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#GW16" aria-controls="GW16" role="tab" data-toggle="tab">GW16</a></li>
+                        </ul>
+                        <!-- Tab panes-->
+                        <div class="tab-content bg-white">
+                            <div class="tab-pane active" id="GW1" role="tabpanel">
+                                <div class="GWposition">
+                                    <h4 class="d-inline-block mr-2 contentTitle">GW 설치위치</h4>
+                                    <div class="d-inline-block">
+                                        <input class="form-control" type="text" name="" value="게이트웨이1" />
+                                    </div>
+                                    <div class="d-inline-block float-right onOffBtn">
+                                        <div class="form-group row mb-0">
+                                            <label class="col-md-6 col-form-label">사용유무</label>
+                                            <div class="col-md-6">
+                                                <label class="switch switch-lg">
+                                                    <input type="checkbox" checked="checked"><span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="hr-dashed">
+                                <div class="row GWconfig_panel">
+                                    <div class="col-xl-4 GWconfig_left">
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력1
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option selected>경보</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="DS1" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력2
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option>사용</option>
+                                                        <option selected>미사용</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="DS1" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력3
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option>사용</option>
+                                                        <option selected>미사용</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="DS1" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력4
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option selected>상태</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="전등1" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력5
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option selected>상태</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="전등2" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력6
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option selected>경보</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="DS2" />
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-4 GWconfig_center">
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        출력1
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>ON</option>
+                                                            <option>OFF</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="output1" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        Feedback
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>사용</option>
+                                                            <option>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        출력2
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option>ON</option>
+                                                            <option selected>OFF</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="output2" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        Feedback
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option>사용</option>
+                                                            <option selected>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="" disabled/>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        출력3
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option>사용</option>
+                                                            <option selected>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="output3" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        Feedback
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>사용</option>
+                                                            <option>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-4 GWconfig_right">
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        온도(℃)
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>사용</option>
+                                                            <option>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="temperature" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        허용범위
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_tempRange">
+                                                        <input class="form-control" type="text" name="" value="10" />
+                                                        <span class="ml-3 mr-3">~</span>
+                                                        <input class="form-control" type="text" name="" value="30" />
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_errorNum">
+                                                        <span class="mr-3">오차</span>
+                                                        <input class="form-control d-inline-block" type="text" name="" value="3" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        습도(%)
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>사용</option>
+                                                            <option>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="humidity" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        허용범위
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_tempRange">
+                                                        <input class="form-control" type="text" name="" value="10" />
+                                                        <span class="ml-3 mr-3">~</span>
+                                                        <input class="form-control" type="text" name="" value="30" />
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_errorNum">
+                                                        <span class="mr-3">오차</span>
+                                                        <input class="form-control d-inline-block" type="text" name="" value="3" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        가스(%)
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option>사용</option>
+                                                            <option selected>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="gas" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        허용범위
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_tempRange">
+                                                        <input class="form-control" type="text" name="" value="10" />
+                                                        <span class="ml-3 mr-3">~</span>
+                                                        <input class="form-control" type="text" name="" value="30" />
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_errorNum">
+                                                        <span class="mr-3">오차</span>
+                                                        <input class="form-control d-inline-block" type="text" name="" value="3" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="GW2" role="tabpanel">
+                                <div class="GWposition">
+                                    <h4 class="d-inline-block mr-2 contentTitle">GW 설치위치</h4>
+                                    <div class="d-inline-block">
+                                        <input class="form-control" type="text" name="" value="게이트웨이2" />
+                                    </div>
+                                    <div class="d-inline-block float-right onOffBtn">
+                                        <div class="form-group row mb-0">
+                                            <label class="col-md-6 col-form-label">사용유무</label>
+                                            <div class="col-md-6">
+                                                <label class="switch switch-lg">
+                                                    <input type="checkbox"><span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="hr-dashed">
+                                <div class="row GWconfig_panel">
+                                    <div class="col-xl-4 GWconfig_left">
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력1
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option selected>경보</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="DS1" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력2
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option>사용</option>
+                                                        <option selected>미사용</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="DS1" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력3
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option>사용</option>
+                                                        <option selected>미사용</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="DS1" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력4
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option selected>상태</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="전등1" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력5
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option selected>상태</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="전등2" />
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="d-inline-block GWconfig_label">
+                                                    입력6
+                                                </div>
+                                                <div class="d-inline-block GWconfig_slt">
+                                                    <select class="form-control">
+                                                        <option selected>경보</option>
+                                                    </select>
+                                                </div>
+                                                <div class="d-inline-block GWconfig_input">
+                                                    <input class="form-control" type="text" name="" value="DS2" />
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-4 GWconfig_center">
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        출력1
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>ON</option>
+                                                            <option>OFF</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="output1" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        Feedback
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>사용</option>
+                                                            <option>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        출력2
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option>ON</option>
+                                                            <option selected>OFF</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="output2" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        Feedback
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option>사용</option>
+                                                            <option selected>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="" disabled/>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        출력3
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option>사용</option>
+                                                            <option selected>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="output3" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        Feedback
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>사용</option>
+                                                            <option>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-4 GWconfig_right">
+                                        <ul class="list-unstyled mb-0">
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        온도(℃)
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>사용</option>
+                                                            <option>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="temperature" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        허용범위
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_tempRange">
+                                                        <input class="form-control" type="text" name="" value="10" />
+                                                        <span class="ml-3 mr-3">~</span>
+                                                        <input class="form-control" type="text" name="" value="30" />
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_errorNum">
+                                                        <span class="mr-3">오차</span>
+                                                        <input class="form-control d-inline-block" type="text" name="" value="3" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        습도(%)
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option selected>사용</option>
+                                                            <option>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="humidity" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        허용범위
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_tempRange">
+                                                        <input class="form-control" type="text" name="" value="10" />
+                                                        <span class="ml-3 mr-3">~</span>
+                                                        <input class="form-control" type="text" name="" value="30" />
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_errorNum">
+                                                        <span class="mr-3">오차</span>
+                                                        <input class="form-control d-inline-block" type="text" name="" value="3" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="mb-2">
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        가스(%)
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_slt">
+                                                        <select class="form-control">
+                                                            <option>사용</option>
+                                                            <option selected>미사용</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_input">
+                                                        <input class="form-control" type="text" name="" value="gas" />
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-inline-block GWconfig_label">
+                                                        허용범위
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_tempRange">
+                                                        <input class="form-control" type="text" name="" value="10" />
+                                                        <span class="ml-3 mr-3">~</span>
+                                                        <input class="form-control" type="text" name="" value="30" />
+                                                    </div>
+                                                    <div class="d-inline-block GWconfig_errorNum">
+                                                        <span class="mr-3">오차</span>
+                                                        <input class="form-control d-inline-block" type="text" name="" value="3" />
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="GW3" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW4" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW5" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW6" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW7" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW8" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW9" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW10" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW11" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW12" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW13" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW14" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW15" role="tabpanel"></div>
+                            <div class="tab-pane" id="GW16" role="tabpanel"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PageContent End -->
+        </section>
+    </div>
+    <div class="modal manualRegist" id="manualRegist" style="display:none" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">수동등록</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-xl-4 col-form-label">빌딩명</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="text" name="buildingName">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-4 col-form-label">설치위치</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="text" name="installPosition">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-4 col-form-label">비고</label>
+                            <div class="col-xl-8">
+                                <textarea class="form-control input-sm"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-4 col-form-label">S/N</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="text" name="serialNum">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-4 col-form-label">MAC</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="text" name="MAC">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-4 col-form-label">IP</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="text" name="IP">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-4 col-form-label">PORT</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="text" name="port">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info btn-xs" id="saveBtn">등록</button>
+                    <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal">취소</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript ">
+        $(document).ready(function() {
+            $(".listSortBtn").click(function() {
+                $(this).find("i").toggleClass("fa-sort-up fa-sort-down");
+            });
+            $("#manuaRegistBtn").click(function() {
+                $("#manualRegist").modal('show');
+            })
+        });
+    </script>
+</body>
+
+</html>

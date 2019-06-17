@@ -1,10 +1,10 @@
 <?
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 	session_start();
 
 	include $_SERVER['DOCUMENT_ROOT']."/log/logApi.php";
-	
+
 	$mode = $_POST['mode'];
 
 	switch ($mode) {
@@ -33,7 +33,7 @@ ini_set('display_errors', 1);
 			foreach($apiResult['data'] as $key => $apiDataArr){
 				$regDate = substr($apiDataArr['regDate'], 0, 16);
 				switch ($apiDataArr['type']){
-					case '1' : 
+					case '1' :
 						array_push($typeArr1, Array(
 									'seq' => $apiDataArr['key'],
 									'regDate' => $regDate,
@@ -45,7 +45,7 @@ ini_set('display_errors', 1);
 						break;
 					case '2' :
 						array_push(
-							$typeArr2, 
+							$typeArr2,
 							Array(
 								'seq' => $apiDataArr['key'],
 								'regDate' => $regDate,
@@ -61,7 +61,7 @@ ini_set('display_errors', 1);
 						break;
 					case '3' :
 						array_push(
-							$typeArr3, 
+							$typeArr3,
 							Array(
 								'SerialNo' => $apiDataArr['key'],
 								'regDate' => $regDate,
@@ -123,7 +123,7 @@ ini_set('display_errors', 1);
 						break;
 				}
 			}
-			
+
 			if(count($typeArr1) != 0) $typeArr['login'] = $typeArr1;
 			if(count($typeArr2) != 0) $typeArr['userLog'] = $typeArr2;
 			if(count($typeArr3) != 0) $typeArr['IODevice'] = $typeArr3;
@@ -133,47 +133,102 @@ ini_set('display_errors', 1);
 			if(count($typeArr7) != 0) $typeArr['dayLog'] = $typeArr7;
 			if(count($typeArr8) != 0) $typeArr['weekLog'] = $typeArr8;
 			if(count($typeArr9) != 0) $typeArr['pushLog'] = $typeArr9;
-			
+
 			//p($typeArr);
 			include $_SERVER[DOCUMENT_ROOT]."/log/cBoardHistory.php";
-			
+
 			break;
         case 'writeAlarmLog':
             $postData = Array(
                 'SerialNo' => $_POST['serialNo'],
-                'org_code' => $_SESSION['user_lastOrg'],
+                'org_code' => $_SESSION['user_orgCode'],
                 'id' => $_SESSION['user_id'],
                 'comment' => $_POST['comment'],
                 'GatewayKey' => $_POST['gwKey'],
                 "chNo" => $_POST['chNo'],
                 "type" => $_POST['type'],
-                "bldgName" => $_POST['bldgName']
+                "bldgName" => $_POST['bldgName'],
+                "gatewayComment" => $_POST['gwCmt'],
+                "name"=>$_SESSION["user_name"]
             );
+
+            p($postData);
 
             $apiResult = writeAlarmLog($postData);
 
             echo $apiResult['result'];
 
             break;
-        case 'getMobileHistory':
-            $url = "/ASTA-API/api/history/getChHistoryList";
+		case 'confirmHistory':
+			$postData = Array(
+				'SerialNo' => $_POST['serialNo'],
+				'org_code' => $_SESSION['user_orgCode'],
+				'id' => $_SESSION['user_id'],
+				'comment' => $_POST['comment'],
+				'GatewayKey' => $_POST['gwKey'],
+				"chNo" => $_POST['chNo'],
+				"type" => $_POST['type'],
+				"bldgName" => $_POST['bIdgName'],
+				"gatewayComment" => $_POST['gwCmt'],
+				"name"=>$_SESSION["user_name"]
+			);
 
+			$apiResult = writeAlarmLog($postData);
+
+			echo $apiResult['result'];
+
+			break;
+        case 'getMobileHistory':
             $org_code = ($_SESSION['user_lastOrg']=='')?$_SESSION['user_orgCode']:$_SESSION['user_lastOrg'];
-            $gatewayKey = $_POST['gatewayKey'] ?? '';
+            $gatewayKey = $_POST['gwKey'] ?? '';
             $key = $_POST['key'] ?? '';
 
-            $postData = Array(
-                'org_code' => $org_code,
-                'startDate' => $_POST['sDate']." 00:00:00",
-                'endDate' => $_POST['eDate']." 23:59:59",
-                'key' => $key,
-                'auth' => $_SESSION['user_auth'],
-                'gatewayKey' => $gatewayKey
-            );
+			$postData = Array(
+				'org_code' => $org_code,
+				'startDate' => $_POST['sDate']." 00:00:00",
+				'endDate' => $_POST['eDate']." 23:59:59",
+				'type' => "1,2,3,4,5,6,7",
+				'message' => ''
+			);
 
-            $apiResult = callRestApi($postData, $url);
+			$apiResult = getMobileLogList($postData);
 
-            echo json_encode($apiResult);
+			echo json_encode($apiResult);
             break;
+		case 'getLogView':
+			if($_SESSION['user_auth'] == '4'){
+				$org_code = $_POST['org_code'].",".$_SESSION["user_orgCode"];
+			}
+			else{
+				$org_code = $_POST['org_code'];
+			}
+
+
+			$postData = Array(
+				'org_code' => $org_code,
+				'startDate' => $_POST['startDate']." 00:00:00",
+				'endDate' => $_POST['endDate']." 23:59:59",
+				'type' => $_POST['type'],
+				'message' => $_POST['message']
+			);
+
+
+			$apiResult = getLogList($postData);
+
+			echo json_encode($apiResult);
+			break;
+		case 'getOneLogView':
+			$postData = Array(
+				"org_code" => $_POST['org_code'],
+				"SerialNo" => $_POST['SerialNo'],
+				"GatewayKey" => $_POST['GatewayKey'],
+				"type" => $_POST['type'],
+				"chType" => $_POST['chType']
+			);
+
+			$apiResult = getOneLogList($postData);
+
+			echo json_encode($apiResult);
+			break;
 	}
 ?>

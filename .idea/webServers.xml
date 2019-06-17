@@ -10,6 +10,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="acbda8f6-21ab-4690-96a9-838915b021b4" name="arms" url="http://58.225.16.35">
+        <fileTransfer host="58.225.16.35" port="22" rootFolder="/var/www/asta" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

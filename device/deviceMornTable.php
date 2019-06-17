@@ -85,8 +85,8 @@
 					$outch_bgColor = "#76bc57";	//초록색, 미출력
 				}
 
-			if($outchSelectVal == '1' || $outchSelectVal == '3'){?>	
-				<td style="background-color:<?=$outch_bgColor?>; color:#fff;" class="<?=($_SESSION['user_auth'] >= 2)?"outch":""?>  text-truncate" data-OnOff=<?=$outchOnOFFVal?>>
+			if($outchSelectVal == '1' || $outchSelectVal == '3'){?>
+				<td style="background-color:<?=$outch_bgColor?>; color:#fff;" class="<?=($_SESSION['user_auth'] > 2)?"outch":""?>  text-truncate" data-OnOff=<?=$outchOnOFFVal?>>
                     <em class="<?=$outchIcon?>"></em>
                     <p class="line2-ellisis">
                         <span><?=$outchCmt?></span>

@@ -64,4 +64,11 @@
 		return $apiResult;
 	}
 
+    function registGwByCH($data) {
+        $url = "/ASTA-API/api/gateway/registGwByCH";
+
+        $apiResult = callRestApi($data, $url);
+
+        return $apiResult;
+    }
 ?>

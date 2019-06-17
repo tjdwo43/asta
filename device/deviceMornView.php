@@ -84,12 +84,12 @@
 					<div class="form-group">
 						<div class="text-center">
 							<label class="c-radio">
-								<input id="inlineradio1" type="radio" name="useYN" value="3">
+								<input id="inlineradio1" type="radio" name="useYN" value="1">
 								<span class="fa fa-circle"></span> ON
 							</label>
 
 							<label class="c-radio">
-								<input id="inlineradio2" type="radio" name="useYN" value="4">
+								<input id="inlineradio2" type="radio" name="useYN" value="2">
 								<span class="fa fa-circle"></span> OFF
 							</label>
 						</div>
@@ -255,7 +255,10 @@
 						'GatewayKey' : gatewayKey,
 						'outch1' : outch1Val,
 						'outch2' : outch2Val,
-						'outch3' : outch3Val
+						'outch3' : outch3Val,
+                        'outResult1' : '2',
+                        'outResult2' : '2',
+                        'outResult3' : '2'
 					},
 					success : function(data){
 						if(data == 0){

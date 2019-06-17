@@ -1,6 +1,6 @@
 <?
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 session_start();
 
 include_once $_SERVER['DOCUMENT_ROOT']."/inc/fnc.php";
@@ -17,7 +17,7 @@ switch($mode) {
 
         $postData = Array(
             'auth' => $_SESSION["user_auth"],
-            'org_code' => $orgCode
+            'seq' => $_SESSION['user_seq']
         );
 
         $getBuildingList = buildingList($postData);
@@ -48,6 +48,56 @@ switch($mode) {
 
         echo json_encode($buildingLastIdg);
 
+        break;
+    case 'registBidg':
+        $postData= Array(
+          'address'=> $_POST['address'],
+          'conStartDate'=>$_POST['conStartDate'],
+          'conEndDate'=>$_POST['conEndDate'],
+          'floor'=>$_POST['floor'],
+          'bSize'=>$_POST['bSize'],
+          'org_name'=>$_POST['org_name'],
+          'noExpire'=>$_POST['noExpire']
+        );
+
+        $apiResult = rstBidg($postData);
+
+        echo json_encode($apiResult);
+
+        break;
+    case 'updateBidg':
+        $postData= Array(
+            'org_code'=> $_POST['org_code'],
+            'address'=> $_POST['address'],
+            'conStartDate'=>$_POST['conStartDate'],
+            'conEndDate'=>$_POST['conEndDate'],
+            'floor'=>$_POST['floor'],
+            'bSize'=>$_POST['bSize'],
+            'org_name'=>$_POST['org_name'],
+            'noExpire'=>$_POST['noExpire']
+        );
+
+        $apiResult = updateBidg($postData);
+
+        echo json_encode($apiResult);
+        break;
+    case 'deleteBidg':
+        $postData= Array(
+            'org_code'=> $_POST['org_code']
+        );
+
+        $apiResult = deleteBidg($postData);
+
+        echo $apiResult['result'];
+        break;
+    case 'duplicateBIdgName':
+        $postData= Array(
+            'org_name'=> $_POST['org_name']
+        );
+
+        $apiResult = duplicateBIdgName($postData);
+
+        echo $apiResult['result'];
         break;
 }
 ?>

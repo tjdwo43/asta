@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>ASTA</title>
+    <!-- =============== VENDOR STYLES ===============-->
+    <!-- FONT AWESOME-->
+    <link rel="stylesheet" href="./vendor/@fortawesome/fontawesome-free/css/brands.css">
+    <link rel="stylesheet" href="./vendor/@fortawesome/fontawesome-free/css/regular.css">
+    <link rel="stylesheet" href="./vendor/@fortawesome/fontawesome-free/css/solid.css">
+    <link rel="stylesheet" href="./vendor/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <!-- SIMPLE LINE ICONS-->
+    <link rel="stylesheet" href="./vendor/simple-line-icons/css/simple-line-icons.css">
+
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" id="bscss">
+    <!-- =============== APP STYLES ===============-->
+    <link rel="stylesheet" href="./css/app.min.css" id="maincss">
+
+    <!-- ANIMATE.CSS-->
+    <link rel="stylesheet" href="./vendor/animate.css/animate.css">
+
+    <!-- WHIRL (spinners)-->
+    <link rel="stylesheet" href="./vendor/whirl/dist/whirl.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.2/moment-with-locales.min.js"></script>
+
+    <!-- Custom Css -->
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/asta_style.css">
+
+    <!-- =============== VENDOR SCRIPTS ===============-->
+    <!-- MODERNIZR-->
+    <script src="./vendor/modernizr/modernizr.custom.js"></script>
+    <!-- STORAGE API-->
+    <script src="./vendor/js-storage/js.storage.js"></script>
+
+    <!-- BOOTSTRAP-->
+    <!-- <script src="/vendor/popper.js/dist/umd/popper.js"></script> -->
+    <script src="./vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- PARSLEY-->
+    <script src="./vendor/parsleyjs/dist/parsley.min.js"></script>
+    <!-- =============== APP SCRIPTS ===============-->
+    <script src="./js/app.min.js"></script>
+
+    <!-- =============== Customer JS =============== -->
+    <script src="./js/asta-event.js"></script>
+</head>
+
+<body>
+    <div class="wrapper ">
+        <!-- top navbar-->
+        <header class="topnavbar-wrapper">
+            <!-- START Top Navbar-->
+            <nav class="navbar topnavbar">
+                <!-- START Left navbar-->
+                <ul class="navbar-nav mr-auto flex-row pl-lg-5 navbar-leftArea">
+                    <!-- 장비 모니터링 유저 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./monitor_view_user.html">
+                            <img src="./img/icon/icon_monitoring_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">장비 모니터링</span>
+                        </a>
+                    </li>
+                    <!-- 장비 모니터링 유저 시작-->
+                    <!-- 장비 모니터링 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./monitor_view_admin.html">
+                            <img src="./img/icon/icon_monitoring_admin_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">장비 모니터링(관리자)</span>
+                        </a>
+                    </li>
+                    <!-- 장비 모니터링 시작-->
+                    <!-- 로그 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./logView.html">
+                            <img src="./img/icon/icon_log_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">이력 조회</span>
+                        </a>
+                    </li>
+                    <!-- 로그 끝-->
+                    <!-- 스케줄 설정 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link" id="user-block-toggle" href="./scheduleConfig.html">
+                            <img src="./img/icon_schedule_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">스케줄 설정</span>
+                        </a>
+                    </li>
+                    <!-- 스케줄 설정 끝 -->
+                    <!-- 유저 관리 시작-->
+                    <li class="nav-item">
+                        <a class="nav-link active" id="user-block-toggle" href="./userManage.html">
+                            <img src="./img/icon_user_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">사용자 관리</span>
+                        </a>
+                    </li>
+                    <!-- 유저 관리 끝 -->
+                    <!-- 장비 설정 시작 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./deviceConfig.html">
+                            <img src="./img/icon/icon_device_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">장비 설정</span>
+                        </a>
+                    </li>
+                    <!-- 장비 설정 끝-->
+                    <!-- 빌딩 관리 시작 -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./bldgManage.html">
+                            <img src="./img/icon/icn_bldg_n.png" />
+                            <span class="d-none d-md-inline font-weight-bold">빌딩 관리</span>
+                        </a>
+                    </li>
+                    <!-- 빌딩 관리 끝 -->
+                </ul>
+                <!-- START Right Navbar-->
+                <ul class="navbar-nav flex-row navbar-rightArea">
+                    <li class="nav-item font-weight-bold">
+                        <a class="nav-link font-weight-lighter" onclick="JS_logout();">
+                            <span class="d-none d-md-inline mr-2">가산 SK V1 Center - <?=$_SESSION[user_name]."(".$auth_name.")"?></span>
+                            <span class="count-circle text-center">2</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- END Right Navbar-->
+            </nav>
+            <!-- END Top Navbar-->
+        </header>
+
+        <!-- sidebar-->
+        <aside class="aside-container">
+            <!-- START Sidebar (left)-->
+            <div class="aside-inner">
+                <nav class="sidebar" data-sidebar-anyclick-close="">
+                    <!-- START sidebar nav-->
+                    <div class="sidebar-title">
+                        <h3 class="pl-3 font-weight-light">목록</h3>
+                        <button type="button" class="btn btn-info pt-0 pb-0">조회</button>
+                    </div>
+                    <ul class="sidebar-nav">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <colgroup>
+                                    <col width="50px" />
+                                    <col width="60px" />
+                                    <col width="*" />
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </th>
+                                        <th class="font-weight-normal"><span class="mr-2">NO</span> <i class="fas fa-sort-up"></i></th>
+                                        <th class="font-weight-normal">빌딩명</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll" checked>
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">001</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll" checked>
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">002</td>
+                                        <td class="text-left">문래 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">003</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">004</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">005</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">006</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">007</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">008</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">009</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">010</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                            <input type="checkbox" name="checkAll">
+                                            <span class="fa fa-check"></span>
+                                        </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">011</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                                 <input type="checkbox" name="checkAll">
+                                                    <span class="fa fa-check"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">012</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                                    <input type="checkbox" name="checkAll">
+                                                    <span class="fa fa-check"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">013</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="checkbox c-checkbox d-inline-block mt-2">
+                                                <label>
+                                                    <input type="checkbox" name="checkAll">
+                                                    <span class="fa fa-check"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td class="text-left">014</td>
+                                        <td class="text-left">가산 SK V1 Center</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- END table-responsive-->
+                    </ul>
+                    <div class="sidebar-tglBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <!-- END sidebar nav-->
+                </nav>
+            </div>
+            <!-- END Sidebar (left)-->
+        </aside>
+
+        <section class="section-container userMangement">
+            <!-- Page content-->
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="row mt-n2">
+                        <div class="col-xl-6">
+                            <h3 class="d-inline-block mr-4 contentTitle">사용자 상세정보</h3>
+                        </div>
+                        <div class="col-xl-6 text-right optBtnArea">
+                            <button class="btn btn-info btn-xs" type="button" id="regist">등록</button>
+                            <button class="btn btn-secondary btn-xs" type="button">수정</button>
+                            <button class="btn btn-secondary btn-xs" type="button">삭제</button>
+                            <button class="btn btn-secondary btn-xs" type="button">엑셀저장</button>
+                            <button class="btn btn-secondary btn-xs" type="button">엑셀불러오기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-xl-12">
+                    <div class="card card-default card-demo mb-0">
+                        <div class="card-wrapper">
+                            <div class="card-body card_content">
+                                <div class="table-responsive table-bordered tableHeader">
+                                    <table class="table text-center">
+                                        <colgroup>
+                                            <col width="50px" />
+                                            <col width="45px" />
+                                            <col width="200px" />
+                                            <col span="3" width="140px" />
+                                            <col width="170px" />
+                                            <col width="120px" />
+                                            <col width="*" />
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th class="text-left listSortBtn">No <i class="fas fa-sort-up"></i></th>
+                                                <th>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </th>
+                                                <th class="text-left">빌딩명</th>
+                                                <th>이름</th>
+                                                <th>부서</th>
+                                                <th>직위</th>
+                                                <th>휴대폰</th>
+                                                <th>사용권한</th>
+                                                <th>비고</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="table-responsive table-bordered tableContent">
+                                    <table class="table text-center">
+                                        <colgroup>
+                                            <col width="50px" />
+                                            <col width="45px" />
+                                            <col width="200px" />
+                                            <col span="3" width="140px" />
+                                            <col width="170px" />
+                                            <col width="120px" />
+                                            <col width="*" />
+                                        </colgroup>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-left">001</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길동</td>
+                                                <td>영업팀</td>
+                                                <td>과장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">005</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길순</td>
+                                                <td>영업팀</td>
+                                                <td>과장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>일반</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">006</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>대리</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">007</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>전우치</td>
+                                                <td>영업팀</td>
+                                                <td>사원</td>
+                                                <td>010-1234-5678</td>
+                                                <td>일반</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">008</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">009</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>임꺽정</td>
+                                                <td>경영지원팀</td>
+                                                <td>대리</td>
+                                                <td>010-1234-5678</td>
+                                                <td>일반</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">010</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">011</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">012</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">013</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">014</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">015</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">016</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">017</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">018</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">019</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">020</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">021</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>수퍼관리자</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">022</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>일반</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">023</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>일반</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">024</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>일반</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">025</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>일반</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">026</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>일반</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-left">027</td>
+                                                <td>
+                                                    <div class="checkbox c-checkbox d-inline-block">
+                                                        <label class="mb-0">
+                                                            <input type="checkbox"><span class="fa fa-check"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="text-left">가산 SK V1 Center</td>
+                                                <td>홍길남</td>
+                                                <td>영업팀</td>
+                                                <td>차장</td>
+                                                <td>010-1234-5678</td>
+                                                <td>일반</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PageContent End -->
+        </section>
+    </div>
+    <div class="modal userRegist" id="userRegist" style="display:none" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">사용자 등록</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group row essential">
+                            <label class="col-xl-4 col-form-label">아이디</label>
+                            <div class="col-xl-8">
+                                <div class="row">
+                                    <div class="col-xl-8 pr-0">
+                                        <input class="form-control input-sm" type="text" name="userId" required>
+                                    </div>
+                                    <div class="col-xl-4 pl-1">
+                                        <button type="button" class="btn btn-secondary btn-xs">중복확인</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row essential">
+                            <label class="col-xl-4 col-form-label">현재 비밀번호</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="password" name="currentPW">
+                            </div>
+                        </div>
+                        <div class="form-group row essential">
+                            <label class="col-xl-4 col-form-label">신규 비밀번호</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="password" name="newPW">
+                            </div>
+                        </div>
+                        <div class="form-group row essential">
+                            <label class="col-xl-4 col-form-label">신규 비밀번호 확인</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="password" name="reEnterNewPW">
+                            </div>
+                        </div>
+                        <div class="form-group row essential">
+                            <label class="col-xl-4 col-form-label">이름</label>
+                            <div class="col-xl-8">
+                                <div class="row">
+                                    <div class="col-xl-8 pr-0">
+                                        <input class="form-control input-sm" type="text" name="userName">
+                                    </div>
+                                    <div class="col-xl-4 pl-1 text-center">
+                                        <div class="checkbox c-checkbox d-inline-block mt-1">
+                                            <label class="mb-0">
+                                                <input type="checkbox" id="multiChk">
+                                                    <span class="fa fa-check"></span>
+                                                    <em class="text-mediumGray">다중</em>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row essential">
+                            <label class="col-xl-4 col-form-label">부서</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="text" name="department">
+                            </div>
+                        </div>
+                        <div class="form-group row essential">
+                            <label class="col-xl-4 col-form-label">직위</label>
+                            <div class="col-xl-8">
+                                <input class="form-control input-sm" type="text" name="position">
+                            </div>
+                        </div>
+                        <div class="form-group row essential">
+                            <label class="col-xl-4 col-form-label">휴대폰</label>
+                            <div class="col-xl-8">
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <input class="form-control input-sm" type="text" name="firstNumber">
+                                    </div>
+                                    <div class="col-xl-4 phoneLine">
+                                        <input class="form-control input-sm" type="text" name="middleNumber">
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <input class="form-control input-sm" type="text" name="lastNumber">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row essential nameOfBelonging">
+                            <label class="col-xl-4 col-form-label">소속명</label>
+                            <div class="col-xl-8">
+                                <select class="form-control input-sm">
+                                    <option selected>소속을 선택해주세요.</option>
+                                    <option >가산 SK V1 Center</option>
+                                    <option>문래 SK V1 Center</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row essential">
+                            <label class="col-xl-4 col-form-label">권한</label>
+                            <div class="col-xl-8">
+                                <select class="form-control input-sm">
+                                    <option selected>권한을 선택해주세요.</option>
+                                    <option>관리자</option>
+                                    <option>일반 사용자</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-4 col-form-label" style="text-indent:5px;">비고</label>
+                            <div class="col-xl-8">
+                                <textarea class="form-control input-sm">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-xl-4 col-form-label" style="text-indent:5px;">다중 셀렉트</label>
+                            <div class="col-xl-8">
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <p class="guideText essential">필수입력항목</p>
+                    <button type="button" class="btn btn-info btn-xs" id="saveBtn">등록</button>
+                    <button type="button" class="btn btn-secondary btn-xs" data-dismiss="modal">취소</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".listSortBtn").click(function() {
+                $(this).find("i").toggleClass("fa-sort-up fa-sort-down");
+            });
+            // 테이블 최대높이값 설정
+            $(".tableContent").css("maxHeight", getHeight());
+
+            $("#regist").click(function() {
+                $("#userRegist").modal('show');
+            })
+            $("#saveBtn").click(function() {
+                //유효성 검사
+                alert("사용자 저장");
+            });
+            //사용자 등록 - 다중 체크박스 이벤트
+            $("#multiChk").change(function() {
+                if ($(this).is(":checked")) {
+                    console.log("check");
+                } else {
+                    console.log("uncheck");
+                }
+            });
+        });
+
+
+        function getHeight() {
+            return window.innerHeight - document.querySelector(".tableContent").getBoundingClientRect().top - 20;
+        }
+    </script>
+</body>
+
+</html>

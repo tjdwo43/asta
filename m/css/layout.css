@@ -1,14 +1,73 @@
-header { position:fixed; top:0; background-color: #18A0CA; padding : 0.75rem;font-weight : bold; width:100%; z-index:1000;}
+html, body { min-height:568px;}
+
+.wrap {position: relative; min-height: 568px; height:100%; overflow-y: scroll;}
+
+.notch-header{
+    position:fixed;
+    top:0;
+    background-color: #18a0ca;
+    width:100%;
+    z-index:1000;
+    height:constant(safe-area-inset-top);
+    height:env(safe-area-inset-top);
+}
+header {
+    position:fixed;
+    background-color: #18a0ca;
+    padding : 0.75rem;
+    font-weight : bold;
+    width:100%;
+    z-index:1000;
+    height:3rem;
+    top: constant(safe-area-inset-top); /* iOS 11.0 */
+    top: env(safe-area-inset-top); /* iOS 11.2 */}
 header > span { color : #fff; font-size : 1.0rem; }
 header > span > img{ width : 21px; height: 21px; vertical-align: text-bottom; }
 
-.header-gap { height:3rem; }
+.header-gap { height: 3rem; height:calc(3rem + constant(safe-area-inset-top)); height:calc(3rem + env(safe-area-inset-top) );}
+
+#header-buildingName> .tag{
+    padding: 2px 10px;
+    color: #fff;
+    border-radius: 7px;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-bottom: 0;
+    font-weight: 700;
+    background-color: transparent;
+    border: 2px solid #fff;
+}
+
+#header-buildingName> .status-danger{
+    color: #9a0d0d;
+    border-color: #9a0d0d;
+}
+
+#header-buildingName> .status-nomal{
+    color: #fff;
+    border-color: #fff;
+}
 
 nav { display: flex; overflow: auto; text-align: center; }
 nav > div{border: 1px solid #18A0CA; border-bottom-width: 3px;min-width : 120px; width: 100%; padding: 3px;}
 nav > div > div{padding : 3px 0;}
 nav img{width : 2.0rem;height : 2.0rem;}
 nav span { font-size:12px; font-weight:bold; margin-top:6px; color : #000; }
+
+#MOVE_TOP_BTN2 {
+    position: fixed;
+    right: 7%;
+    bottom: 15px;
+    z-index: 999;
+    padding: 6px 13px;
+    border: 2px solid #18A0CA;
+    border-radius: 25px;
+    background-color: transparent;
+}
+
+#MOVE_TOP_BTN2>em{
+    color:#18A0CA;
+}
 
 .mobileNav{
     width: 0px;
@@ -85,17 +144,16 @@ section:first-child > div.monitoring-title {
 
 div.monitoring-contents {
      background-color: #f2f2f2;
-     padding : 3px 6px;
  }
 
 div.monitoring-contents  .m-item {
     display : inline-block;
-    width : 32%;
+    width : 32.8%;
     padding : 2.5rem 0;
     border : 1px solid #666;
     border-radius: 5px;
     background-color: #fff;
-    margin : 3px 3px;
+    margin : 0.1rem 0.1rem;
     color: #666;
     text-align: center;
     font-weight : bold;
@@ -103,8 +161,8 @@ div.monitoring-contents  .m-item {
 
 @media (max-width: 760px) {
     div.monitoring-contents  .m-item {
-        width: 31%;
-        margin : 3px 2px;
+        width: 32.3%;
+        margin : 0.1rem 0.1rem;
         padding : 1.5rem 0;
     }
     div.monitoring-contents  .m-item > p{
@@ -124,7 +182,7 @@ section.logSearch {
 }
 
 section.logSearch .calendar-div {
-    width: 45%;
+    width: 100%;
 }
 
 section.logSearch .calendar-div .input-group-text {
@@ -165,7 +223,7 @@ table.mTable tbody tr{border-bottom : 1px solid #666;}
 .input_sect {
     position: absolute;
     left: 50%;
-    top: 60%;
+    top: 55%;
     width: 100%;
     transform: translate(-50%, -50%);
 }
@@ -174,10 +232,14 @@ table.mTable tbody tr{border-bottom : 1px solid #666;}
     position: absolute;
     left: 50%;
     bottom: 5%;
-    width: 50%;
+    width: 35%;
     transform: translate(-50%, -50%);
 }
 
-.bLog_sect img{ width: 75%;}
+.bLog_sect img{ width: 100%;}
 
 .mLogin-Btn { color: #fff; background-color: #18A0CA; border-color: #18A0CA;}
+
+.user_tbody td{
+    padding:5px !important;
+}
